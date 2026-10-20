@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mohammed Diaa | Full Stack Developer</title>
+  <meta name="description" content="Mohammed Diaa Al-Mlmslmane — Full Stack Developer specializing in .NET Core & Angular, multi-tenant SaaS and Domain-Driven Design." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    // Apply saved theme & language before paint to avoid a flash
+    (function () {
+      var d = document.documentElement;
+      try {
+        var t = localStorage.getItem('theme');
+        if (!t) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        d.setAttribute('data-theme', t);
+        if (localStorage.getItem('lang') === 'ar') { d.lang = 'ar'; d.dir = 'rtl'; }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <!-- Animated background -->
+  <div class="bg" aria-hidden="true">
+    <span class="blob blob-1"></span>
+    <span class="blob blob-2"></span>
+    <span class="blob blob-3"></span>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="#home" class="logo">MD<span>.</span></a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#about" data-i18n="nav.about">About</a>
+        <a href="#skills" data-i18n="nav.skills">Skills</a>
+        <a href="#experience" data-i18n="nav.experience">Experience</a>
+        <a href="#projects" data-i18n="nav.projects">Projects</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn lang-btn" id="langToggle" aria-label="Switch language">ع</button>
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+        </button>
+        <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="home">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <p class="hero-hello fade-up" style="--d:0" data-i18n="hero.hello">
+            <span class="wave">👋</span> Hi, I'm
+          </p>
+          <h1 class="hero-name fade-up" style="--d:1" data-i18n="hero.name">
+            Mohammed <span class="gradient-text">Diaa</span>
+          </h1>
+          <h2 class="hero-role fade-up" style="--d:2">
+            <span class="mono">&lt;</span><span id="typed"></span><span class="cursor">|</span><span class="mono">/&gt;</span>
+          </h2>
+          <p class="hero-desc fade-up" style="--d:3" data-i18n="hero.desc">
+            Full Stack Developer building scalable web applications with
+            <strong>.NET Core</strong> &amp; <strong>Angular</strong> — from multi-tenant SaaS
+            architecture to real-time, high-performance dashboards.
+          </p>
+          <div class="hero-cta fade-up" style="--d:4">
+            <a href="#projects" class="btn btn-primary" data-i18n="hero.work">View My Work</a>
+            <a href="assets/Mohammed-Diaa-CV.pdf" class="btn btn-ghost" download>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+              <span data-i18n="hero.cv">Download CV</span>
+            </a>
+          </div>
+          <div class="hero-social fade-up" style="--d:5">
+            <a href="https://github.com/diaatube" target="_blank" rel="noopener" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg>
+            </a>
+            <a href="https://wa.me/963960068926" target="_blank" rel="noopener" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+            </a>
+            <a href="mailto:diaa09414@gmail.com" aria-label="Email">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-visual fade-up" style="--d:3">
+          <div class="code-card" dir="ltr">
+            <div class="code-card-head">
+              <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+              <span class="file-name">Developer.cs</span>
+            </div>
+<pre class="code"><code><span class="k">public class</span> <span class="t">Developer</span>
+{
+  <span class="k">public string</span> Name =&gt; <span class="s">"Mohammed Diaa"</span>;
+  <span class="k">public string</span> Role =&gt; <span class="s">"Full Stack"</span>;
+  <span class="k">public string</span>[] Stack =&gt;
+  [
+    <span class="s">".NET Core"</span>, <span class="s">"Angular"</span>,
+    <span class="s">"ABP"</span>, <span class="s">"SQL Server"</span>
+  ];
+  <span class="k">public bool</span> LovesCleanCode =&gt; <span class="k">true</span>;
+}</code></pre>
+          </div>
+          <div class="float-badge badge-1">⚡ SignalR</div>
+          <div class="float-badge badge-2">🏗️ DDD</div>
+          <div class="float-badge badge-3">☁️ SaaS</div>
+        </div>
+      </div>
+      <a href="#about" class="scroll-hint" aria-label="Scroll down"><span></span></a>
+    </section>
+
+    <!-- About -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-tag">01</span>
+          <h2 data-i18n="about.title">About <span class="gradient-text">Me</span></h2>
+        </div>
+        <div class="about-grid">
+          <div class="about-text reveal">
+            <p data-i18n="about.p1">
+              I'm a <strong>Full Stack Developer</strong> based in Damascus, Syria, skilled in building
+              scalable web applications using <strong>.NET Core</strong> and <strong>Angular</strong>.
+            </p>
+            <p data-i18n="about.p2">
+              I enjoy architecting <strong>multi-tenant SaaS solutions</strong>, applying
+              <strong>Domain-Driven Design</strong>, building <strong>real-time</strong> features, and turning
+              complex business workflows into clean, maintainable, high-performance software.
+            </p>
+            <p data-i18n="about.p3">
+              Currently at <strong>Varx</strong>, developing enterprise web applications with the ABP Framework.
+            </p>
+            <div class="langs">
+              <span class="chip" data-i18n="about.ar">🇸🇾 Arabic — Native</span>
+              <span class="chip" data-i18n="about.en">🇬🇧 English — Intermediate</span>
+            </div>
+          </div>
+          <div class="stats">
+            <div class="stat reveal" style="--d:0"><span class="stat-num" data-count="6">0</span><span class="stat-plus">+</span><p data-i18n="stats.projects">Projects Delivered</p></div>
+            <div class="stat reveal" style="--d:1"><span class="stat-num" data-count="2">0</span><p data-i18n="stats.companies">Companies</p></div>
+            <div class="stat reveal" style="--d:2"><span class="stat-num" data-count="10">0</span><span class="stat-plus">+</span><p data-i18n="stats.tech">Technologies</p></div>
+            <div class="stat reveal" style="--d:3"><span class="stat-num">∞</span><p data-i18n="stats.coffee">Cups of Coffee</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-tag">02</span>
+          <h2 data-i18n="skills.title">Tech <span class="gradient-text">Stack</span></h2>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-card reveal" style="--d:0">
+            <div class="skill-icon">⚙️</div>
+            <h3 data-i18n="skills.backend">Backend</h3>
+            <div class="tags">
+              <span>C#</span><span>.NET Core</span><span>ASP.NET Core</span><span>ABP Framework</span><span>REST API</span><span>SignalR</span>
+            </div>
+          </div>
+          <div class="skill-card reveal" style="--d:1">
+            <div class="skill-icon">🎨</div>
+            <h3 data-i18n="skills.frontend">Frontend</h3>
+            <div class="tags">
+              <span>Angular</span><span>TypeScript</span><span>JavaScript</span><span>Tailwind CSS</span><span>PrimeNG</span><span>HTML5 / CSS3</span>
+            </div>
+          </div>
+          <div class="skill-card reveal" style="--d:2">
+            <div class="skill-icon">🗄️</div>
+            <h3 data-i18n="skills.db">Database</h3>
+            <div class="tags">
+              <span>SQL Server</span><span>EF Core</span><span>ADO.NET</span><span>Multi-tenancy</span><span>Multi-DB</span>
+            </div>
+          </div>
+          <div class="skill-card reveal" style="--d:3">
+            <div class="skill-icon">🏛️</div>
+            <h3 data-i18n="skills.arch">Architecture &amp; Tools</h3>
+            <div class="tags">
+              <span>DDD</span><span>Repository Pattern</span><span>Background Jobs</span><span>Cron Jobs</span><span>Git</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="marquee reveal" dir="ltr" aria-hidden="true">
+          <div class="marquee-track">
+            <span>.NET Core</span><span>Angular</span><span>C#</span><span>TypeScript</span><span>SQL Server</span><span>ABP</span><span>SignalR</span><span>Tailwind</span><span>PrimeNG</span><span>EF Core</span><span>DDD</span><span>REST API</span>
+            <span>.NET Core</span><span>Angular</span><span>C#</span><span>TypeScript</span><span>SQL Server</span><span>ABP</span><span>SignalR</span><span>Tailwind</span><span>PrimeNG</span><span>EF Core</span><span>DDD</span><span>REST API</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-tag">03</span>
+          <h2 data-i18n="exp.title">Work <span class="gradient-text">Experience</span></h2>
+        </div>
+        <div class="timeline">
+          <div class="tl-item reveal">
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <div class="tl-head">
+                <div>
+                  <h3 data-i18n="exp.role">Full-Stack Developer</h3>
+                  <p class="tl-company">Varx</p>
+                </div>
+                <span class="tl-date" data-i18n="exp.varx.date">2025 — Present</span>
+              </div>
+              <ul data-i18n="exp.varx.list">
+                <li>Architect and develop multi-tenant enterprise web applications using ABP Framework, .NET Core and Angular.</li>
+                <li>Apply Domain-Driven Design (DDD) and the Repository Pattern for clean, scalable, maintainable architecture.</li>
+                <li>Design and optimize relational database models using SQL Server, EF Core and ADO.NET.</li>
+                <li>Implement background automation with Cron Jobs &amp; Background Jobs, SignalR real-time notifications, and email verification.</li>
+                <li>Helped refactor a single-tenant legacy POS system into a modern multi-tenant SaaS platform with multi-database support.</li>
+                <li>Build responsive, modern admin dashboards with Angular, Tailwind CSS and PrimeNG.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="tl-item reveal">
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <div class="tl-head">
+                <div>
+                  <h3 data-i18n="exp.role">Full-Stack Developer</h3>
+                  <p class="tl-company">Gamma Tech</p>
+                </div>
+                <span class="tl-date">2025</span>
+              </div>
+              <ul data-i18n="exp.gamma.list">
+                <li>Engineered scalable web applications and RESTful APIs connecting Angular dashboards with SQL Server databases.</li>
+                <li>Developed an E-Commerce fashion platform with product catalog management, shopping cart and order processing.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="tl-item reveal">
+            <div class="tl-dot"></div>
+            <div class="tl-card">
+              <div class="tl-head">
+                <div>
+                  <h3 data-i18n="edu.degree">Associate Degree in Computer Technology</h3>
+                  <p class="tl-company" data-i18n="edu.school">Computer Technology Institute — Syrian Virtual University</p>
+                </div>
+                <span class="tl-date" data-i18n="edu.date">Graduated</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-tag">04</span>
+          <h2 data-i18n="projects.title">Featured <span class="gradient-text">Projects</span></h2>
+        </div>
+        <div class="projects-grid">
+          <article class="project-card reveal" style="--d:0">
+            <div class="project-body">
+              <div class="project-top">
+                <span class="project-num">01</span>
+                <span class="project-badge">SaaS</span>
+              </div>
+              <h3 data-i18n="p1.title">Medical Sessions &amp; Queue Management</h3>
+              <p data-i18n="p1.desc">Multi-tenant application that lets doctors manage clinic appointments, queues and patient records — with real-time SignalR notifications, scheduled Cron Jobs and automated email verification.</p>
+              <div class="tags small"><span>ASP.NET Core (ABP)</span><span>Angular</span><span>Tailwind</span><span>PrimeNG</span><span>SignalR</span><span>SQL Server</span></div>
+            </div>
+          </article>
+
+          <article class="project-card reveal" style="--d:1">
+            <div class="project-body">
+              <div class="project-top">
+                <span class="project-num">02</span>
+                <span class="project-badge">SaaS</span>
+              </div>
+              <h3 data-i18n="p2.title">POS System SaaS Modernization</h3>
+              <p data-i18n="p2.desc">Transformed a single-tenant Point of Sale system into a multi-tenant SaaS platform supporting both separate and shared databases.</p>
+              <div class="tags small"><span>ASP.NET Core</span><span>Angular</span><span>Multi-DB</span><span>SQL Server</span></div>
+            </div>
+          </article>
+
+          <article class="project-card reveal" style="--d:2">
+            <div class="project-body">
+              <div class="project-top">
+                <span class="project-num">03</span>
+                <span class="project-badge" data-i18n="badge.enterprise">Enterprise</span>
+              </div>
+              <h3 data-i18n="p3.title">Warba Bank Workflow Management</h3>
+              <p data-i18n="p3.desc">Digital workflow tracking app handling sequential document sign-offs and departmental approvals.</p>
+              <div class="tags small"><span>ASP.NET Core</span><span>Angular</span><span>SQL Server</span></div>
+            </div>
+          </article>
+
+          <article class="project-card reveal" style="--d:3">
+            <div class="project-body">
+              <div class="project-top">
+                <span class="project-num">04</span>
+                <span class="project-badge" data-i18n="badge.ecommerce">E-Commerce</span>
+              </div>
+              <h3 data-i18n="p4.title">E-Commerce Fashion Store</h3>
+              <p data-i18n="p4.desc">Online clothing store with product catalog management, cart system and order processing.</p>
+              <div class="tags small"><span>ASP.NET Core</span><span>Angular</span><span>Tailwind</span><span>SQL Server</span></div>
+            </div>
+          </article>
+
+          <article class="project-card reveal" style="--d:4">
+            <div class="project-body">
+              <div class="project-top">
+                <span class="project-num">05</span>
+                <span class="project-badge" data-i18n="badge.restaurant">Restaurant</span>
+              </div>
+              <h3 data-i18n="p5.title">EMenu — Restaurant Menu System</h3>
+              <p data-i18n="p5.desc">Digital system enabling restaurants to manage electronic menus and orders, with user roles and permissions.</p>
+              <div class="tags small"><span>ASP.NET Core</span><span>Angular</span><span>SQL Server</span></div>
+            </div>
+          </article>
+
+          <article class="project-card reveal" style="--d:5">
+            <div class="project-body">
+              <div class="project-top">
+                <span class="project-num">06</span>
+                <span class="project-badge" data-i18n="badge.marketplace">Marketplace</span>
+              </div>
+              <h3 data-i18n="p6.title">CarVex — Auto Parts &amp; Emergency Repair</h3>
+              <p data-i18n="p6.desc">Platform connecting car owners with auto parts merchants — customers request parts by car type and governorate or submit emergency repair requests, with separate customer and merchant sign-up and a full admin dashboard.</p>
+              <div class="tags small"><span>.NET 10</span><span>Angular 20</span><span>EF Core</span><span>SQL Server</span><span>JWT</span><span>SignalR</span><span>PrimeNG</span><span>Tailwind</span></div>
+              <a href="https://github.com/diaatube/CarVex_FE" target="_blank" rel="noopener" class="project-link">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg>
+                <span data-i18n="project.code">Frontend Code</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact-card reveal">
+          <span class="section-tag">05</span>
+          <h2 data-i18n="contact.title">Let's Build Something <span class="gradient-text">Great</span></h2>
+          <p data-i18n="contact.desc">I'm open to new opportunities and collaborations. Feel free to reach out — I'll get back to you as soon as I can.</p>
+          <a href="mailto:diaa09414@gmail.com" class="btn btn-primary btn-lg">diaa09414@gmail.com</a>
+          <div class="contact-links">
+            <a href="https://wa.me/963960068926" target="_blank" rel="noopener" class="btn btn-ghost">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
+              <span data-i18n="contact.whatsapp">WhatsApp</span>
+            </a>
+            <a href="tel:+963960068926" class="btn btn-ghost">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span dir="ltr">+963 960 068 926</span>
+            </a>
+          </div>
+          <div class="contact-meta">
+            <span data-i18n="contact.location">📍 Damascus, Syria</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> <span data-i18n="footer.text">Mohammed Diaa Al-Mlmslmane. Built with HTML, CSS &amp; a bit of JS.</span></p>
+      <a href="#home" class="to-top" aria-label="Back to top">↑</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
